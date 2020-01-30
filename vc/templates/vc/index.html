@@ -1,0 +1,72 @@
+{% extends 'vc/base_blog.html' %}
+
+{% block title %}
+    Seventy-five
+{% endblock %}
+
+{% block content %}
+    {% for post in reverseOut %}
+    <div class='d-flex justify-content-center'>
+        <div class="card text-center col-md-8 col-sm-10 mb-4">
+            
+            <div class="card-body text-head">
+                <h2 class="card-title text-head"> {{ post.title }} </h2>
+                <p class="card-text h4"> 
+                                    
+                                    
+                            {{ post.describe_text|truncatewords:25  }}
+                                    
+                                    
+                                    
+                </p>
+                <a href="{{ post.get_absolute_url }}"><button class="btn btn-success btn-lg">Читать далее</button></a>
+                
+            </div>
+            <div class="card-footer text-muted">
+                {{ post.datepub }}
+            </div>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+    {% if is_paginated %}
+
+    <div class="d-flex justify-content-center ">
+    <nav class=' col-8 text-center d-flex justify-content-center ' aria-label="...">
+        <ul class="pagination">
+    <li class="page-item {% if not prev_url %} disabled {% endif%}">
+      <a class="page-link" href="{{ prev_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    
+    
+    
+
+    {% for n in page.paginator.page_range %}
+
+        {% if posts.number == n %}
+
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{n}}">{{n}} <span class="sr-only">(current)</span></a>
+                </li>
+
+        {% elif n > posts.number|add:-3 and n < posts.number|add:3 %}
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+        </li>
+
+        {% endif %}
+    
+    {% endfor %}
+    <li class="page-item {% if not next_url %} disabled {% endif %} ">
+      <a class="page-link" href="{{next_url}}">Next</a>
+    </li>
+  </ul>
+</nav>
+{% endif %}
+    </div>
+    
+{% endblock %}
+    <!--first section -->
+

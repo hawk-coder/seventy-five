@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+    {% block title %}
+        Seventy-Five
+    {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <script>
+        $('document').ready(function () {
+            var typed = new Typed('#typed', {
+                strings: ["Seventy-Five", "Сайт о 2 <br> мировой войне"],
+                backSpeed: 40,
+                typeSpeed: 40,
+                loop: true,
+                loopCount: Infinity,
+                showCursor: false,
+                backDelay: 2000,
+                smartBackspace: true // Default value
+            });
+        })
+    </script>
+
+    <section class="module parallax parallax-1">
+        <div class="container-fluid texthead">
+
+
+            <span style="visibility: hidden;">|</span>
+            <a class="text-decoration-none" href="/"><h1 class="fheader" id="typed"></h1></a>
+            
+        </div>
+    </section>
+
+    {% block content %}
+
+        No content
+
+    {% endblock %}
+
+
+</body>
+</html>
